@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# Second-Hand Car Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React + Firebase app for buying and selling second-hand cars. Includes role-based access, with admins managing listings and users browsing and sending purchase requests.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Firebase Authentication (Google & Email/Password)
+- Firestore for storing car listings & purchase requests
+- Firebase Storage for car images
+- Admin dashboard to add/update/delete cars & manage requests
+- Users can view available cars, search/filter, and request to buy
+- Responsive design for mobile & desktop
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React (with TypeScript)
+- Firebase (Auth, Firestore, Storage)
+- React Router
+- CSS Grid / Flexbox for layout (or optionally Tailwind / Bootstrap)
+- Vite / Create React App for setup (adjust as per your actual choice)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Live Demo
 
-### `npm test`
+[View Live App](https://your-live-link-here.com)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### 1. Clone the repo
+```bash
+git clone https://github.com/Sravanikonapalli/car-marketplace.git
+cd car-marketplace
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Configure Firebase
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
 
-### `npm run eject`
+Enable:
+- Authentication (Google & Email/Password)
+- Firestore Database
+- Storage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Copy Firebase config and update in `src/firebase/firebaseConfig.ts`:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```ts
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_MSG_ID",
+    appId: "YOUR_APP_ID",
+};
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const storage = getStorage(app);
+```
 
-## Learn More
+### 4. Run the app
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## App Routes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `/` — Main user interface to browse, view details of each car, and request to buy cars
+- `/admin` — Admin dashboard to manage car listings
+- `/admin/requests` — Admin view to manage and review purchase requests
+
