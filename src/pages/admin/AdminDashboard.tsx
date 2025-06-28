@@ -100,33 +100,33 @@ const AdminDashboard = () => {
 
       <div className="car-form">
         <label>Make:</label>
-        <input placeholder="e.g., Toyota" value={form.make} onChange={(e) => setForm({ ...form, make: e.target.value })} />
+        <input value={form.make} onChange={(e) => setForm({ ...form, make: e.target.value })} placeholder="e.g., Toyota" />
 
         <label>Model:</label>
-        <input placeholder="e.g., Innova" value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
+        <input value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} placeholder="e.g., Innova" />
 
         <label>Year:</label>
         <input type="number" value={form.year} onChange={(e) => setForm({ ...form, year: +e.target.value })} />
 
         <label>Fuel Type:</label>
-        <input placeholder="e.g., Diesel" value={form.fuelType} onChange={(e) => setForm({ ...form, fuelType: e.target.value })} />
+        <input value={form.fuelType} onChange={(e) => setForm({ ...form, fuelType: e.target.value })} placeholder="e.g., Diesel" />
 
-        <label>Mileage (in km):</label>
-        <input type="number" placeholder="e.g., 45000" value={form.mileage} onChange={(e) => setForm({ ...form, mileage: +e.target.value })} />
+        <label>Mileage (km):</label>
+        <input type="number" value={form.mileage} onChange={(e) => setForm({ ...form, mileage: +e.target.value })} />
 
         <label>Transmission:</label>
-        <input placeholder="e.g., Manual or Automatic" value={form.transmission} onChange={(e) => setForm({ ...form, transmission: e.target.value })} />
+        <input value={form.transmission} onChange={(e) => setForm({ ...form, transmission: e.target.value })} placeholder="Manual/Automatic" />
 
         <label>Owners:</label>
         <input type="number" value={form.owners} onChange={(e) => setForm({ ...form, owners: +e.target.value })} />
 
         <label>Registration City:</label>
-        <input placeholder="e.g., Hyderabad" value={form.registrationCity} onChange={(e) => setForm({ ...form, registrationCity: e.target.value })} />
+        <input value={form.registrationCity} onChange={(e) => setForm({ ...form, registrationCity: e.target.value })} placeholder="e.g., Hyderabad" />
 
         <label>Description:</label>
-        <textarea placeholder="e.g., Well maintained, single owner, service history available..." value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+        <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} placeholder="Condition, service history..." />
 
-        <label>Price (in ₹):</label>
+        <label>Price (₹):</label>
         <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: +e.target.value })} />
 
         <label>Image:</label>
@@ -140,37 +140,19 @@ const AdminDashboard = () => {
       <h3>All Cars</h3>
       {cars.map((car) => (
         <div key={car.id} className="car-card">
-          <h4>
-            {car.make} {car.model} ({car.year})
-          </h4>
+          <h4>{car.make} {car.model} ({car.year})</h4>
           {car.images?.[0] && <img src={car.images[0]} alt="car" />}
-          <p>
-            <strong>Fuel:</strong> {car.fuelType}
-          </p>
-          <p>
-            <strong>Mileage:</strong> {car.mileage} km
-          </p>
-          <p>
-            <strong>Transmission:</strong> {car.transmission}
-          </p>
-          <p>
-            <strong>Owners:</strong> {car.owners}
-          </p>
-          <p>
-            <strong>City:</strong> {car.registrationCity}
-          </p>
-          <p>
-            <strong>Description:</strong> {car.description}
-          </p>
-          <p>
-            <strong>Price:</strong> ₹{car.price}
-          </p>
-          <button className="btn btn-primary" onClick={() => handleEdit(car)}>
-            Edit
-          </button>
-          <button className="btn btn-danger" onClick={() => handleDelete(car.id!)}>
-            Delete
-          </button>
+          <p><strong>Fuel:</strong> {car.fuelType}</p>
+          <p><strong>Mileage:</strong> {car.mileage} km</p>
+          <p><strong>Transmission:</strong> {car.transmission}</p>
+          <p><strong>Owners:</strong> {car.owners}</p>
+          <p><strong>City:</strong> {car.registrationCity}</p>
+          <p><strong>Description:</strong> {car.description}</p>
+          <p><strong>Price:</strong> ₹{car.price}</p>
+          <div className="buttons">
+            <button className="btn btn-primary" onClick={() => handleEdit(car)}>Edit</button>
+            <button className="btn btn-danger" onClick={() => handleDelete(car.id!)}>Delete</button>
+          </div>
         </div>
       ))}
     </div>

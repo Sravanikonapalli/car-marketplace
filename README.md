@@ -8,7 +8,7 @@ A modern React + Firebase app for buying and selling second-hand cars. Includes 
 - Firestore for storing car listings & purchase requests
 - Firebase Storage for car images
 - Admin dashboard to add/update/delete cars & manage requests
-- Users can view available cars, search/filter, and request to buy
+- Users can view available cars, view details, and request to buy
 - Responsive design for mobile & desktop
 
 ## Tech Stack
@@ -16,8 +16,8 @@ A modern React + Firebase app for buying and selling second-hand cars. Includes 
 - React (with TypeScript)
 - Firebase (Auth, Firestore, Storage)
 - React Router
-- CSS Grid / Flexbox for layout (or optionally Tailwind / Bootstrap)
-- Vite / Create React App for setup (adjust as per your actual choice)
+- CSS Grid and Flexbox for layout
+- Create React App for setup
 
 ## Live Demo
 
